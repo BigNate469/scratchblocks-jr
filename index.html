@@ -33,15 +33,20 @@
           let img = document.createElement('img');
           switch (lines[i]) {
             case 'control':
+            case 'trigger':
+            case 'triggering':
               img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/flow.svg';
               break;
-            case 'looks' || 'look':
+            case 'looks':
+            case 'look':
               img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/looks.svg';
               break;
-            case 'sound' || 'sounds':
+            case 'sound':
+            case 'sounds':
               img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/sounds.svg';
               break;
-            case 'events' || 'event' || 'trigger' || 'triggering':
+            case 'events':
+            case 'event':
               img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/yellowCmd.svg';
               break;
             case 'motion':
