@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      div {
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+      #blocks img {
+        margin: 0;
+        padding: 0;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="input"></textarea>
+    <div id="blocks"></div>
+    <script>
+      const el = document.getElementById('blocks');
+      let elList = el.children;
+      const text = document.getElementById('input');
+      text.addEventListener('change', () => {
+        while (el.firstChild) {
+          el.removeChild(el.firstChild);
+        }
+        let lines = text.value.split('\n');
+        for(let i = 0; i < lines.length; i++) {
+          if(lines[i] === '') {
+            continue;
+          };
+          let img = document.createElement('img');
+          switch (lines[i]) {
+            case ('control'):
+              img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/flow.svg';
+              break;
+            case ('looks' || 'look'):
+              img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/looks.svg';
+              break;
+            case ('sound' || 'sounds'):
+              img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/sounds.svg';
+              break;
+            case ('events' || 'event' || 'trigger' || 'triggering'):
+              img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/yellowCmd.svg';
+              break;
+            case ('motion'):
+              img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/blueCmd.svg';
+              break;
+            case ('end'):
+              img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/endshort.svg';
+              break;
+            default:
+              img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/caretcmd.svg';
+          };
+          el.appendChild(img);
+        };
+        reformat();
+      });
+      function reformat() {
+        console.log(elList);
+        for(let i = 0; i < elList.length; i++) {
+          elList[i].style.left = (i * (0 - 11) + 'px');
+          console.log(i * -11 + 'px');
+        };
+      };
+    </script>
+  </body>
+</html>
