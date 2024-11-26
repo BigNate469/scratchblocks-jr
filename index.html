@@ -34,39 +34,54 @@
           switch (lines[i]) {
             case 'control':
               img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/flow.svg';
+              img.dataset.type = 'stack';
               break;
             case 'looks':
             case 'look':
               img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/looks.svg';
+              img.dataset.type = 'stack';
               break;
             case 'sound':
             case 'sounds':
               img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/sounds.svg';
+              img.dataset.type = 'stack';
               break;
             case 'events':
             case 'event':
             case 'trigger':
             case 'triggering':
               img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/yellowCmd.svg';
+              img.dataset.type = 'stack';
               break;
             case 'motion':
               img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/blueCmd.svg';
+              img.dataset.type = 'stack';
               break;
             case 'end':
               img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/endshort.svg';
+              img.dataset.type = 'stack';
               break;
+            case 'hat':
+              img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/start.svg';
+              img.dataset.type = 'hat';
             default:
               img.src = 'https://raw.githubusercontent.com/scratchfoundation/scratchjr/refs/heads/develop/editions/free/src/assets/blocks/caretcmd.svg';
+              img.dataset.type = 'stack';
           };
           el.appendChild(img);
         };
         reformat();
       });
       function reformat() {
-        console.log(elList);
         for(let i = 0; i < elList.length; i++) {
-          elList[i].style.left = (i * (0 - 11) + 'px');
-          console.log(i * -11 + 'px');
+          switch (elList[i].dataset.type) {
+            case 'stack':
+              elList[i].style.left = (i * (0 - 11) + 'px');
+              break;
+            case 'hat':
+              elList[i].style.left = (i * (0 - 20) + 'px');
+              break;
+          }
         };
       };
     </script>
